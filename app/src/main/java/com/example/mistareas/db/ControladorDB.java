@@ -9,34 +9,35 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class ControladorDB extends SQLiteOpenHelper {
+    String consulta="CREATE TABLE TAREAS (ID INTEGER PRIMARY KEY AUTOINCREMENT,TAREA TEXT NOT NULL,NOMBRE TEXT);";
+    String consulta2="CREATE TABLE USUARIOS (NOMBRE TEXT PRIMARY KEY NOT NULL, CONTRASEÑA TEXT NOT NULL)";
     public ControladorDB(@Nullable Context context) {
         super(context, "com.example.mistareas.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE TAREAS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOMBRE TEXT NOT NULL);");
+        db.execSQL(consulta);
+        db.execSQL(consulta2);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public void addTarea(String tarea){
-
+    public void addTarea(String tarea, String user){
         ContentValues registro = new ContentValues();
-        registro.put("NOMBRE", tarea);
-
+        registro.put("TAREA", tarea);
+        registro.put("NOMBRE",user);
         SQLiteDatabase db = this.getWritableDatabase();
-
         db.insert("TAREAS", null, registro);
-
         db.close();
     }
-    public String[] obtenerTareas(){
-        SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor= db.rawQuery("SELECT * FROM TAREAS",null);
+
+    public String[] obtenerTareas(String user){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor= db.rawQuery("SELECT * FROM TAREAS WHERE NOMBRE=?",new String[]{user});
         int regs = cursor.getCount();
         if(regs ==0){
             db.close();
@@ -55,14 +56,46 @@ public class ControladorDB extends SQLiteOpenHelper {
 
     public int numeroRegistros(){
         SQLiteDatabase db = this.getReadableDatabase();
-
         Cursor cursor= db.rawQuery("SELECT * FROM TAREAS",null);
         return cursor.getCount();
     }
 
     public void borrarTarea(String tarea){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("TAREAS", "NOMBRE=?",new String[]{tarea});
+        db.delete("TAREAS", "TAREA=?",new String[]{tarea});
         db.close();
     }
+    // tabla usuarios
+    public void addUser(String user, String pass){
+        ContentValues registro = new ContentValues();
+        registro.put("NOMBRE", user);
+        registro.put("CONTRASEÑA",pass);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert("USUARIOS", null, registro);
+        db.close();
+    }
+
+
+    public boolean checkUserLogin(String username,String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor= db.rawQuery("SELECT * FROM USUARIOS WHERE NOMBRE=? AND CONTRASEÑA=?",new String[]{String.valueOf(username),String.valueOf(password)});
+        int regs = cursor.getCount();
+        return regs <= 0;
+    }
+    public Boolean checkUserName(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from USUARIOS where NOMBRE = ?", new String[]{username});
+        int num = cursor.getCount();
+        return num > 0;
+    }
+    public void insertUser(String username, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("NOMBRE", username);
+        contentValues.put("CONTRASEÑA", password);
+        db.insert("USUARIOS", null, contentValues);
+        db.close();
+    }
+
+
 }

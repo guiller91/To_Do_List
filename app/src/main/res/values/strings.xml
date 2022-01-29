@@ -8,4 +8,9 @@
     <string name="login">LOGIN</string>
     <string name="crear_cuenta">Crear Cuenta</string>
     <string name="terminado">Terminado</string>
+    <string name="boton_login">LogIn</string>
+    <string name="text_to">To</string>
+    <string name="text_do">Do</string>
+    <string name="text_list">List</string>
+    <string name="logo_description">TODO</string>
 </resources>

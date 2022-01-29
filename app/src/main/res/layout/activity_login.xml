@@ -6,62 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/fondo"
-        android:scaleType="fitXY"
-        android:contentDescription="@string/imagen_de_fondo"
-        />
-
-    <TextView
-        android:id="@+id/titulo"
-        style="@style/etiquetas"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="95dp"
-        android:text="@string/mis_tareas"
-        android:textSize="40sp"
-        />
-
-    <TextView
-        android:id="@+id/subtitulo"
-        style="@style/etiquetas"
-        android:layout_below="@id/titulo"
-        android:layout_marginTop="10dp"
-        android:text="@string/itt"
-        android:textSize="20sp"
-        />
-
-    <LinearLayout
-        android:id="@+id/cajaLogin"
+    <VideoView
+        android:id="@+id/video_background"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/subtitulo"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:padding="10dp"
-        >
+        android:layout_centerInParent="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/titulo"
+        android:paddingTop="16dp"/>
+
+    <RelativeLayout
+        android:id="@+id/relative_container"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_background">
+
+        <Button
+            android:id="@+id/btn_show_login"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:fontFamily="@font/roboto"
+            android:onClick="slideUpLogin"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:layout_below="@+id/btn_show_login"
+            android:layout_margin="16dp">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/cajaUser"
                 style="@style/cajasTexto"
-                android:hint="@string/usuario"
-                >
+                android:hint="@string/usuario">
+
                 <requestFocus />
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:layout_below="@+id/input_layout_username"
+            android:layout_margin="16dp">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/cajaPass"
                 style="@style/cajasTexto"
@@ -70,26 +79,36 @@
 
                 />
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <Button
-        android:id="@+id/boton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cajaLogin"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@color/colorAccent"
-        android:text="@string/login"
-        android:textSize="20sp"
-        android:onClick="login"
-        />
-    <TextView
-        android:id="@+id/cuentaNueva"
-        style="@style/etiquetas"
-        android:layout_below="@id/boton"
-        android:layout_marginTop="16dp"
-        android:text="@string/crear_cuenta"
-        android:textSize="25sp"
-        android:onClick="crearCuenta"
-        />
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_layout_password"
+            android:layout_alignEnd="@id/input_layout_password"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto"
+            android:onClick="login"
+            android:text="@string/boton_login"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_layout_password"
+            android:layout_alignStart="@id/input_layout_password"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto"
+            android:onClick="crearCuenta"
+            android:text="@string/crear_cuenta"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
 </RelativeLayout>

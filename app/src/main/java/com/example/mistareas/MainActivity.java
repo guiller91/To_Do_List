@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,12 +24,14 @@ public class MainActivity extends AppCompatActivity {
     ControladorDB controladorDB;
     private ArrayAdapter<String> adapter;
     ListView listViewTareas;
+    String usuario;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
         controladorDB = new ControladorDB(this);
-        listViewTareas =(ListView) findViewById(R.id.listaTareas);
         actualizarUI();
     }
     //añadir menu a la view
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                        //Añadir datos a bbdd
                         String tarea = cajaTexto.getText().toString();
-                        controladorDB.addTarea(tarea);
+                        controladorDB.addTarea(tarea,usuario);
                         actualizarUI();
                     }
                 })
@@ -65,13 +68,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void actualizarUI(){
+        try {
+            //SI EL NUMERO DE REGISTROS DE LA BBDD ES 0
+            if (controladorDB.numeroRegistros() == 0) {
+                listViewTareas.setAdapter(null);
+            } else {
+                adapter = new ArrayAdapter<>(this,R.layout.item_tarea,R.id.task_tittle,controladorDB.obtenerTareas(usuario));
+                listViewTareas.setAdapter(adapter);
+            }
+        } catch (NullPointerException e) {
 
-       if(controladorDB.numeroRegistros()==0){
-           listViewTareas.setAdapter(null);
-       }else{
-           adapter = new ArrayAdapter<>(this,R.layout.item_tarea,R.id.task_tittle,controladorDB.obtenerTareas());
-           listViewTareas.setAdapter(adapter);
-       }
+            listViewTareas.setAdapter(null);
+        }
     }
 
     public void borrarTarea(View view){
@@ -81,4 +89,14 @@ public class MainActivity extends AppCompatActivity {
         controladorDB.borrarTarea(tarea);
         actualizarUI();
     }
+
+    public void init(){
+
+        bundle = this.getIntent().getExtras();
+        if(bundle !=null){
+            usuario = bundle.getString("usuario");
+        }
+           listViewTareas =(ListView) findViewById(R.id.listaTareas);
+    }
+
 }
