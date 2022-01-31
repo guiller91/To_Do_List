@@ -60,9 +60,9 @@ public class ControladorDB extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
-    public void borrarTarea(String tarea){
+    public void borrarTarea(String tarea,String usuario){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("TAREAS", "TAREA=?",new String[]{tarea});
+        db.delete("TAREAS", "TAREA=? AND NOMBRE=?",new String[]{tarea,usuario});
         db.close();
     }
     public void editarTarea(String tarea, String contenido){

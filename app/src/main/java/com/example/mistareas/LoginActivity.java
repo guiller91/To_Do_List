@@ -76,7 +76,6 @@ public class LoginActivity extends AppCompatActivity{
             finish();
         }
     }
-    //ventana slide up login
     public void init(){
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)container.getLayoutParams();
         layoutParams.height = 200;
@@ -110,7 +109,7 @@ public class LoginActivity extends AppCompatActivity{
        slide_up = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_up);
        init();
        videoBackground.setMediaController(null);
-       videoBackground.setVideoPath("android.resource://"+getPackageName()+"/"+R.raw.fondoneon2);
+       videoBackground.setVideoPath("android.resource://"+getPackageName()+"/"+R.raw.splash);
        videoBackground.start();
        videoBackground.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
            @Override
