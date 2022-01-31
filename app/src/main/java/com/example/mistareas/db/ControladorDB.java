@@ -65,6 +65,13 @@ public class ControladorDB extends SQLiteOpenHelper {
         db.delete("TAREAS", "TAREA=?",new String[]{tarea});
         db.close();
     }
+    public void editarTarea(String tarea, String contenido){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues registro = new ContentValues();
+        registro.put("TAREA", contenido);
+        db.update("TAREAS",registro,"TAREA=?",new String[]{tarea});
+        db.close();
+    }
     // tabla usuarios
     public void addUser(String user, String pass){
         ContentValues registro = new ContentValues();

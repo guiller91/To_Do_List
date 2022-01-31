@@ -13,4 +13,5 @@
     <string name="text_do">Do</string>
     <string name="text_list">List</string>
     <string name="logo_description">TODO</string>
+    <string name="newTask">NewTask</string>
 </resources>

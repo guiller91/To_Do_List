@@ -7,6 +7,13 @@
     tools:context=".MainActivity">
 
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
     <ListView
         android:id="@+id/listaTareas"
         android:layout_width="wrap_content"

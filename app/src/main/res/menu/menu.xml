@@ -5,8 +5,9 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/newTask"
-        android:icon="@mipmap/mas"
+        android:icon="@mipmap/anadir"
         app:showAsAction="always"
-        android:title="NewTask"
+        android:title="@string/newTask"
         />
+
 </menu>

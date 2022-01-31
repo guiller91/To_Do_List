@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -44,19 +45,49 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+        switch(item.getItemId()){
+            case R.id.newTask:
+                EditText cajaTexto = new EditText(this);
+                AlertDialog dialog = new AlertDialog.Builder(this)
+                        .setTitle("Nueva tarea")
+                        .setMessage("Que quieres hacer a continuación?")
+                        .setView(cajaTexto)
+                        .setPositiveButton("Añadir",new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Añadir datos a bbdd
+                                String tarea = cajaTexto.getText().toString();
+                                controladorDB.addTarea(tarea,usuario);
+                                actualizarUI();
+                            }
+                        })
+                        .setNegativeButton("Cancelar",null)
+                        .create();
+                dialog.show();
+                break;
+            case android.R.id.home:
+                back();
+                break;
+        }
 
-        //TO-DO
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void editarTarea(View view){
+        View parent = (View) view.getParent();
+        TextView tareaTextView = (TextView) parent.findViewById(R.id.task_tittle);
+        String tareaEditable = tareaTextView.getText().toString();
         EditText cajaTexto = new EditText(this);
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Nueva tarea")
+                .setTitle("Editar tarea")
                 .setMessage("Que quieres hacer a continuación?")
                 .setView(cajaTexto)
-                .setPositiveButton("Añadir",new DialogInterface.OnClickListener(){
+                .setPositiveButton("Editar",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       //Añadir datos a bbdd
+                        //Añadir datos a bbdd
                         String tarea = cajaTexto.getText().toString();
-                        controladorDB.addTarea(tarea,usuario);
+                        controladorDB.editarTarea(tareaEditable,tarea);
                         actualizarUI();
                     }
                 })
@@ -64,7 +95,12 @@ public class MainActivity extends AppCompatActivity {
                 .create();
         dialog.show();
 
-        return super.onOptionsItemSelected(item);
+    }
+
+    private void back() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void actualizarUI(){
@@ -98,5 +134,7 @@ public class MainActivity extends AppCompatActivity {
         }
            listViewTareas =(ListView) findViewById(R.id.listaTareas);
     }
+
+
 
 }

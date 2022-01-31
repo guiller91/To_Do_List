@@ -9,18 +9,29 @@
         android:id="@+id/task_tittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:fontFamily="@font/miami"
-        android:textSize="25sp"
         android:layout_alignBaseline="@+id/button"
-        />
+        android:fontFamily="@font/roboto"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/terminado"
-        android:layout_alignParentRight="true"
+        style="@style/botones"
+        android:layout_alignParentEnd="true"
+        android:src="@mipmap/completada"
         android:onClick="borrarTarea"
+
         />
+
+    <ImageButton
+        style="@style/botones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="editarTarea"
+        android:layout_toStartOf="@+id/button"
+        android:src="@mipmap/editar" />
+
 </RelativeLayout>

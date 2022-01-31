@@ -72,8 +72,7 @@ public class LoginActivity extends AppCompatActivity{
         }else{
             Intent intent = new Intent(this,MainActivity.class);
             intent.putExtra("usuario",usuario);
-            Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
-            startActivity(intent,b);
+            startActivity(intent);
             finish();
         }
     }
