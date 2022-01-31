@@ -5,7 +5,7 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/newTask"
-        android:icon="@mipmap/anadir"
+        android:icon="@drawable/anadir"
         app:showAsAction="always"
         android:title="@string/newTask"
         />

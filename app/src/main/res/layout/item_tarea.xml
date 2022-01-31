@@ -17,21 +17,23 @@
 
     <ImageButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         style="@style/botones"
         android:layout_alignParentEnd="true"
-        android:src="@mipmap/completada"
+        android:src="@drawable/terminar"
         android:onClick="borrarTarea"
-
+        android:background="@drawable/bordes_redondos"
         />
 
     <ImageButton
         style="@style/botones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:onClick="editarTarea"
         android:layout_toStartOf="@+id/button"
-        android:src="@mipmap/editar" />
+        android:src="@drawable/editar"
+        android:background="@drawable/bordes_redondos"
+        android:layout_marginRight="16dp"/>
 
 </RelativeLayout>
