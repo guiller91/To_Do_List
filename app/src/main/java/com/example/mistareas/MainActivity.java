@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                                 //Añadir datos a bbdd
                                 String tarea = cajaTexto.getText().toString();
                                 controladorDB.addTarea(tarea,usuario);
+                                mensaje("Tarea añadida con exito " + usuario);
                                 actualizarUI();
                             }
                         })
@@ -88,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
                         //Añadir datos a bbdd
                         String tarea = cajaTexto.getText().toString();
                         controladorDB.editarTarea(tareaEditable,tarea);
+                        mensaje("Tarea editada con exito " + usuario);
                         actualizarUI();
+
                     }
                 })
                 .setNegativeButton("Cancelar",null)
@@ -133,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
             usuario = bundle.getString("usuario");
         }
            listViewTareas =(ListView) findViewById(R.id.listaTareas);
+    }
+    public void mensaje(String msg){
+        Toast toast = Toast.makeText(this,msg,Toast.LENGTH_LONG);
+        toast.show();
     }
 
 
