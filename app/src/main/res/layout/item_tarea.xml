@@ -23,8 +23,9 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/terminar"
         android:onClick="borrarTarea"
-        android:background="@drawable/bordes_redondos"
-        />
+        android:background="@drawable/boton_sin_fondo"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/terminartarea" />
 
     <ImageButton
         style="@style/botones"
@@ -33,7 +34,9 @@
         android:onClick="editarTarea"
         android:layout_toStartOf="@+id/button"
         android:src="@drawable/editar"
-        android:background="@drawable/bordes_redondos"
-        android:layout_marginRight="16dp"/>
-
+        android:background="@drawable/boton_sin_fondo"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/editartarea"
+        />
 </RelativeLayout>

@@ -1,6 +1,5 @@
 package com.example.mistareas;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -38,10 +37,9 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
         Objects.requireNonNull(getSupportActionBar()).hide();
         controladorDB= new ControladorDB(this);
-        readyUI();
+        init();
     }
 
-    //Notificación en pantalla
     public void crearCuenta(View view){
         String usuario = user.getText().toString();
         String contraseña = pass.getText().toString();
@@ -59,7 +57,6 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     public void login(View view){
-
         String usuario = user.getText().toString();
         String contraseña = pass.getText().toString();
         if(usuario.isEmpty() || contraseña.isEmpty()){
@@ -76,12 +73,12 @@ public class LoginActivity extends AppCompatActivity{
             finish();
         }
     }
-    public void init(){
+    // ocultamos una parte del layout
+    public void colapsarLayout(){
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)container.getLayoutParams();
         layoutParams.height = 200;
         container.setLayoutParams(layoutParams);
         container.startAnimation(slide_up);
-
     }
 
    public void slideUpLogin(View view){
@@ -95,11 +92,11 @@ public class LoginActivity extends AppCompatActivity{
             flag = false;
         }else{
             flag = true;
-            init();
+            colapsarLayout();
         }
    }
    //Preparar ui
-   public void readyUI(){
+   public void init(){
        videoBackground = findViewById(R.id.video_background);
        container = findViewById(R.id.relative_container);
        textInputLayoutUsername = findViewById(R.id.input_layout_username);
@@ -107,7 +104,7 @@ public class LoginActivity extends AppCompatActivity{
        user = (TextInputEditText) findViewById(R.id.cajaUser);
        pass = (TextInputEditText) findViewById(R.id.cajaPass);
        slide_up = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_up);
-       init();
+       colapsarLayout();
        videoBackground.setMediaController(null);
        videoBackground.setVideoPath("android.resource://"+getPackageName()+"/"+R.raw.splash);
        videoBackground.start();

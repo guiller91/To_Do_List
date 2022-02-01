@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         controladorDB = new ControladorDB(this);
         actualizarUI();
     }
-    //añadir menu a la view
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -141,7 +141,4 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(this,msg,Toast.LENGTH_LONG);
         toast.show();
     }
-
-
-
 }

@@ -17,48 +17,38 @@
 
     <TextView
         android:id="@+id/text_to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/splashText"
         android:text="@string/text_to"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
         android:layout_toStartOf="@+id/logo_splash"
         android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
         />
 
     <TextView
         android:id="@+id/text_do"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/splashText"
         android:layout_toEndOf="@+id/logo_splash"
         android:layout_centerVertical="true"
         android:text="@string/text_do"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:layout_marginStart="16dp"/>
 
     <TextView
         android:id="@+id/text_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/splashText"
         android:text="@string/text_list"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
         android:layout_below="@+id/logo_splash"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
          />
 
     <ImageView
         android:id="@+id/logo_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:contentDescription="@string/logo_description"
-        app:srcCompat="@mipmap/list" />
+        app:srcCompat="@drawable/list" />
 
 
 </RelativeLayout>

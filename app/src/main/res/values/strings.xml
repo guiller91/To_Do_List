@@ -15,4 +15,6 @@
     <string name="logo_description">TODO</string>
     <string name="newTask">NewTask</string>
     <string name="tituloapp">tituloApp</string>
+    <string name="terminartarea">terminarTarea</string>
+    <string name="editartarea">editarTarea</string>
 </resources>

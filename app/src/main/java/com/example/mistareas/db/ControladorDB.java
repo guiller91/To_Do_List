@@ -103,6 +103,4 @@ public class ControladorDB extends SQLiteOpenHelper {
         db.insert("USUARIOS", null, contentValues);
         db.close();
     }
-
-
 }
