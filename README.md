@@ -1,5 +1,7 @@
 # To Do List
 
+🚨🚨 CREACIÓN DE USUARIO OBLIGATORIA 🚨🚨
+
 ## Splash activity
 
 ![splash.gif](gif/splash.gif)
