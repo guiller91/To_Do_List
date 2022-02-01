@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mis tareas</string>
+    <string name="app_name">To Do List</string>
     <string name="mis_tareas">Mis Tareas</string>
     <string name="imagen_de_fondo">imagen_de_fondo</string>
     <string name="itt">ITT</string>
