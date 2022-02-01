@@ -18,7 +18,7 @@
 
 ## Añadir tarea
 
-![añadir_tarea.gif](gif/añadir_tarea.gif)
+![añadir.gif](gif/añadir.gif)
 
 ## Modificar y terminar tarea
 
