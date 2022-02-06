@@ -1,13 +1,13 @@
+com/example/mistareas/BuildConfig.java
+ com.example.mistareas.BuildConfig
+com/example/mistareas/SplashActivity.java
+ com.example.mistareas.SplashActivity
+com/example/mistareas/db/ControladorDB.java
+ com.example.mistareas.db.ControladorDB
 com/example/mistareas/LoginActivity.java
  com.example.mistareas.LoginActivity
  com.example.mistareas.LoginActivity$1
-com/example/mistareas/SplashActivity.java
- com.example.mistareas.SplashActivity
 com/example/mistareas/MainActivity.java
  com.example.mistareas.MainActivity
  com.example.mistareas.MainActivity$1
  com.example.mistareas.MainActivity$2
-com/example/mistareas/db/ControladorDB.java
- com.example.mistareas.db.ControladorDB
-com/example/mistareas/BuildConfig.java
- com.example.mistareas.BuildConfig
