@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         View parent = (View) view.getParent();
         TextView tareaTextView = (TextView) parent.findViewById(R.id.task_tittle);
         String tarea = tareaTextView.getText().toString();
+        mensaje("tarea realizada con exito "+ usuario);
         controladorDB.borrarTarea(tarea,usuario);
         actualizarUI();
     }
